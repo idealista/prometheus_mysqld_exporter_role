@@ -1,0 +1,10 @@
+---
+
+- name: MYSQLD_EXPORTER | Copy .my.cnf template to conf path
+  template:
+    src: .my.cnf.j2
+    dest: "{{ mysqld_exporter_conf_path }}/.my.cnf"
+    mode: 0600
+    owner: "{{ mysqld_exporter_user }}"
+    group: "{{ mysqld_exporter_group }}"
+  notify: restart mysqld_exporter

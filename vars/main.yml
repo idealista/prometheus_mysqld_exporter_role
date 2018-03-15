@@ -1,0 +1,5 @@
+---
+
+mysqld_exporter_release_name: "mysqld_exporter-{{ mysqld_exporter_version }}.{{ mysqld_exporter_release_system }}"
+mysqld_exporter_package: "{{ mysqld_exporter_release_name }}.tar.gz"
+mysqld_exporter_url: "https://github.com/prometheus/mysqld_exporter/releases/download/v{{ mysqld_exporter_version }}/{{ mysqld_exporter_package }}"

@@ -1,0 +1,76 @@
+---
+
+mysqld_exporter_version: 0.10.0
+mysqld_exporter_release_system: linux-amd64
+
+# Set true to force the download and installation of the binary
+mysqld_exporter_force_reinstall: false
+
+## Service options
+
+# Owner
+mysqld_exporter_user: prometheus
+mysqld_exporter_group: prometheus
+
+# start on boot
+mysqld_exporter_service_enabled: true
+# current state: started, stopped
+mysqld_exporter_service_state: started
+
+# Files & Paths
+mysqld_exporter_root_path: /opt/mysqld_exporter
+mysqld_exporter_bin_path: "{{ mysqld_exporter_root_path }}/bin"
+mysqld_exporter_conf_path: /etc/mysqld_exporter
+mysqld_exporter_log_path: /var/log/mysqld_exporter
+mysqld_exporter_log_file: mysqld_exporter.log
+
+# Options file values to read MySQL credentials from
+mysqld_exporter_mysql_user: root
+mysqld_exporter_mysql_password: default
+mysqld_exporter_mysql_port: 3306
+
+# Port & path
+mysqld_exporter_port: 9104
+mysqld_exporter_path: metrics
+
+mysqld_exporter_options:
+  # General Flags (https://github.com/prometheus/mysqld_exporter#general-flags)
+  - "config.my-cnf='{{ mysqld_exporter_conf_path }}/.my.cnf'"
+  - "log.level='info'"
+  - "web.listen-address=:{{ mysqld_exporter_port }}"
+  - "web.telemetry-path='/{{ mysqld_exporter_path }}'"
+  # Collector Flags (https://github.com/prometheus/mysqld_exporter#collector-flags)
+  - "collect.auto_increment.columns"
+  - "collect.binlog_size"
+  ## Toggle comments if 'Percona TokuDB' is used instead of InnoDB.
+  ## line after (for InnoDB) should be commented in that case
+  # "collect.engine_tokudb_status"
+  - "collect.engine_innodb_status"
+  - "collect.global_status"
+  - "collect.global_variables"
+  - "collect.info_schema.clientstats"
+  - "collect.info_schema.innodb_metrics"
+  - "collect.info_schema.innodb_tablespaces"
+  - "collect.info_schema.processlist"
+  - "collect.info_schema.processlist.min_time=0"
+  - "collect.info_schema.query_response_time"
+  - "collect.info_schema.tables"
+  - "collect.info_schema.tables.databases='*'"
+  - "collect.info_schema.tablestats"
+  - "collect.info_schema.userstats"
+  ## Toggle comments if 'only_full_group_by' mode is not used
+  # - "collect.perf_schema.eventsstatements"
+  # - "collect.perf_schema.eventsstatements.digest_text_limit=120"
+  # - "collect.perf_schema.eventsstatements.limit=250"
+  # - "collect.perf_schema.eventsstatements.timelimit=86400"
+  - "collect.perf_schema.eventswaits"
+  - "collect.perf_schema.file_events"
+  - "collect.perf_schema.file_instances"
+  - "collect.perf_schema.indexiowaits"
+  - "collect.perf_schema.tableiowaits"
+  - "collect.perf_schema.tablelocks"
+  - "collect.slave_status"
+  ## Toggle comments if 'replication hearbeat' is used
+  # - "collect.heartbeat"
+  # - "collect.heartbeat.database='heartbeat'"
+  # - "collect.heartbeat.table='heartbeat'"

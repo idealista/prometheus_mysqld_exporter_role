@@ -1,0 +1,55 @@
+---
+
+port:
+  tcp6:{{ mysqld_exporter_port }}:
+    listening: true
+
+service:
+  mysqld_exporter:
+    enabled: true
+    running: true
+
+user:
+  {{ mysqld_exporter_user }}:
+    exists: true
+    groups:
+      - {{ mysqld_exporter_group }}
+    shell: /usr/sbin/nologin
+group:
+  {{ mysqld_exporter_group }}:
+    exists: true
+process:
+  mysqld_exporter:
+    running: true
+
+file:
+  "{{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }}":
+    owner: {{ mysqld_exporter_user }}
+    group: {{ mysqld_exporter_group }}
+    exists: true
+    filetype: file
+  /run/mysqld_exporter/mysqld_exporter.pid:
+    owner: {{ mysqld_exporter_user }}
+    group: {{ mysqld_exporter_group }}
+    exists: true
+    filetype: file
+  {{ mysqld_exporter_root_path }}:
+    owner: {{ mysqld_exporter_user }}
+    group: {{ mysqld_exporter_group }}
+    exists: true
+    filetype: directory
+  {{ mysqld_exporter_bin_path }}:
+    owner: {{ mysqld_exporter_user }}
+    group: {{ mysqld_exporter_group }}
+    exists: true
+    filetype: directory
+  {{ mysqld_exporter_conf_path }}:
+    owner: {{ mysqld_exporter_user }}
+    group: {{ mysqld_exporter_group }}
+    exists: true
+    filetype: directory
+  {{ mysqld_exporter_log_path }}:
+    owner: {{ mysqld_exporter_user }}
+    group: {{ mysqld_exporter_group }}
+    exists: true
+    filetype: directory

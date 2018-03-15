@@ -1,0 +1,8 @@
+---
+
+- name: MYSQLD_EXPORTER | Configuring service
+  systemd:
+    name: mysqld_exporter
+    state: "{{ mysqld_exporter_service_state }}"
+    enabled: "{{ mysqld_exporter_service_enabled }}"
+    daemon_reload: "yes"

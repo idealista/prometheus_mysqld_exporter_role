@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+
+# This fake file config exists because mysqld_exporter only accepts cnf files
+# with key-value pairs: https://github.com/prometheus/mysqld_exporter/issues/132
+# and there are no plans to fix that issue (was closed on 7 Jun 2016).
+
+[client]
+user = {{ mysqld_exporter_mysql_user }}
+password = "{{ mysqld_exporter_mysql_password }}"
+port = {{ mysqld_exporter_mysql_port }}

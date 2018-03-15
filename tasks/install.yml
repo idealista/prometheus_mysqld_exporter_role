@@ -1,0 +1,70 @@
+---
+
+- name: MYSQLD_EXPORTER | Ensure mysqld_exporter group
+  group:
+    name: "{{ mysqld_exporter_group }}"
+    system: "yes"
+    state: present
+
+- name: MYSQLD_EXPORTER | Ensure mysqld_exporter user
+  user:
+    name: "{{ mysqld_exporter_user }}"
+    group: "{{ mysqld_exporter_group }}"
+    system: "yes"
+    shell: /usr/sbin/nologin
+    createhome: "no"
+
+- name: MYSQLD_EXPORTER | Ensure skeleton paths
+  file:
+    dest: "{{ item }}"
+    owner: "{{ mysqld_exporter_user }}"
+    group: "{{ mysqld_exporter_group }}"
+    state: directory
+  with_items:
+    - "{{ mysqld_exporter_root_path }}"
+    - "{{ mysqld_exporter_bin_path }}"
+    - "{{ mysqld_exporter_conf_path }}"
+    - "{{ mysqld_exporter_log_path }}"
+
+- name: MYSQLD_EXPORTER | Check mysqld_exporter_check version
+  command: mysqld_exporter -version
+  register: mysqld_exporter_check
+  changed_when: false
+  ignore_errors: true
+
+- name: MYSQLD_EXPORTER | Download package
+  get_url:
+    url: "{{ mysqld_exporter_url }}"
+    dest: /tmp
+  when: 'mysqld_exporter_force_reinstall or mysqld_exporter_check|failed or "mysqld_exporter, version {{ mysqld_exporter_version }}" not in mysqld_exporter_check.stdout'
+
+- name: MYSQLD_EXPORTER | Extract package
+  unarchive:
+    copy: "no"
+    src: "/tmp/{{ mysqld_exporter_package }}"
+    dest: /tmp
+  when: 'mysqld_exporter_force_reinstall or mysqld_exporter_check|failed or "mysqld_exporter, version {{ mysqld_exporter_version }}" not in mysqld_exporter_check.stdout'
+
+- name: MYSQLD_EXPORTER | Copy binary
+  copy:
+    src: "/tmp/{{ mysqld_exporter_release_name }}/mysqld_exporter"
+    dest: "{{ mysqld_exporter_bin_path }}/mysqld_exporter"
+    owner: "{{ mysqld_exporter_user }}"
+    group: "{{ mysqld_exporter_group }}"
+    remote_src: true
+    mode: 0755
+  when: 'mysqld_exporter_force_reinstall or mysqld_exporter_check|failed or "mysqld_exporter, version {{ mysqld_exporter_version }}" not in mysqld_exporter_check.stdout'
+  notify: restart mysqld_exporter
+
+- name: MYSQLD_EXPORTER | Link binary
+  file:
+    src: "{{ mysqld_exporter_bin_path }}/mysqld_exporter"
+    dest: "/usr/bin/mysqld_exporter"
+    state: link
+
+- name: MYSQLD_EXPORTER | Copy Daemon script
+  template:
+    src: mysqld_exporter.service.j2
+    dest: /etc/systemd/system/mysqld_exporter.service
+    mode: 0644
+  notify: restart mysqld_exporter

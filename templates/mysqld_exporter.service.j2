@@ -1,0 +1,18 @@
+[Unit]
+Description=prometheus mysqld exporter
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+PrivateTmp=yes
+User={{ mysqld_exporter_user }}
+Group={{ mysqld_exporter_group }}
+RuntimeDirectory=mysqld_exporter
+ExecStart=/bin/sh -c "{{ mysqld_exporter_bin_path }}/mysqld_exporter -config.my-cnf={{ mysqld_exporter_conf_path }}/.my.cnf {% for option in mysqld_exporter_options %}-{{ option }} {% endfor %}>  {{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }} 2>&1"
+ExecStartPost=/bin/sh -c "echo $MAINPID > /run/mysqld_exporter/mysqld_exporter.pid"
+ExecReload=/bin/kill -HUP $MAINPID
+PIDFile=/run/mysqld_exporter/mysqld_exporter.pid
+KillSignal=SIGTERM
+
+[Install]
+WantedBy=multi-user.target
