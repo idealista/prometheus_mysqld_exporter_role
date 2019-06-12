@@ -62,7 +62,7 @@
     dest: "/usr/bin/mysqld_exporter"
     state: link
 
-- name: MYSQLD_EXPORTER | Copy Daemon script
+- name: MYSQLD_EXPORTER | Copy systemd unit file
   template:
     src: mysqld_exporter.service.j2
     dest: /etc/systemd/system/mysqld_exporter.service
