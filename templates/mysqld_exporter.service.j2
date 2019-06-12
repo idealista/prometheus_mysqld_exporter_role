@@ -11,24 +11,7 @@ Group={{ mysqld_exporter_group }}
 RuntimeDirectory=mysqld_exporter
 Type=simple
 Restart=always
-ExecStart={{ mysqld_exporter_bin_path }}/mysqld_exporter \
---config.my-cnf {{ mysqld_exporter_conf_path }}/.my.cnf \
---collect.global_status \
---collect.info_schema.innodb_metrics \
---collect.auto_increment.columns \
---collect.info_schema.processlist \
---collect.binlog_size \
---collect.info_schema.tablestats \
---collect.global_variables \
---collect.info_schema.query_response_time \
---collect.info_schema.userstats \
---collect.info_schema.tables \
---collect.perf_schema.tablelocks \
---collect.perf_schema.file_events \
---collect.perf_schema.eventswaits \
---collect.perf_schema.indexiowaits \
---collect.perf_schema.tableiowaits \
---web.listen-address=0.0.0.0:9104
+ExecStart=/bin/sh -c "{{ mysqld_exporter_bin_path }}/mysqld_exporter {% for option in mysqld_exporter_options %}--{{ option }} {% endfor %} > {{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }} 2>&1"
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGTERM
 
