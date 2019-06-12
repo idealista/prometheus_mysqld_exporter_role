@@ -1,5 +1,5 @@
 ---
 
-- src: idealista.mysql-role
-  version: 1.2.3
+- src: idealista.mysql_role
+  version: 2.2.2
   name: mysql

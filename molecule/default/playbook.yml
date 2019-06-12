@@ -3,4 +3,4 @@
   hosts: all
   roles:
     - role: mysql
-    - role: prometheus_mysqld_exporter-role
+    - role: prometheus_mysqld_exporter_role
