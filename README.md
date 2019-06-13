@@ -1,7 +1,7 @@
-![Logo](https://raw.githubusercontent.com/idealista/prometheus_mysqld_exporter-role/master/logo.gif)
+![Logo](https://raw.githubusercontent.com/idealista/prometheus_mysqld_exporter_role/master/logo.gif)
 
 # Prometheus MySQL Exporter Ansible role
-[![Build Status](https://travis-ci.org/idealista/prometheus_mysqld_exporter-role.svg?branch=master)](https://travis-ci.org/idealista/prometheus_mysqld_exporter-role)
+[![Build Status](https://travis-ci.org/idealista/prometheus_mysqld_exporter_role.svg?branch=master)](https://travis-ci.org/idealista/prometheus_mysqld_exporter_role)
 
 This ansible role installs a Prometheus MySQL Exporter in a debian environment.
 
@@ -32,16 +32,16 @@ For testing purposes, [Molecule](https://molecule.readthedocs.io/) with Docker a
 Create or add to your roles dependency file (e.g requirements.yml) from GitHub:
 
 ```
-- src: http://github.com/idealista/prometheus_mysqld_exporter-role.git
+- src: http://github.com/idealista/prometheus_mysqld_exporter_role.git
   scm: git
   version: 1.0.0
   name: prometheus_mysqld_exporter
 ```
 
-or using [Ansible Galaxy](https://galaxy.ansible.com/idealista/prometheus_mysqld_exporter-role/) as origin if you prefer:
+or using [Ansible Galaxy](https://galaxy.ansible.com/idealista/prometheus_mysqld_exporter_role/) as origin if you prefer:
 
 ```
-- src: idealista.prometheus_mysqld_exporter-role
+- src: idealista.prometheus_mysqld_exporter_role
 ```
 
 Install the role with ansible-galaxy command:
@@ -67,7 +67,8 @@ Look to the [defaults](defaults/main.yml) properties file to see the possible co
 ### Installing dependencies
 
 ```sh
-$ pipenv install -r test-requirements.txt --python=2.7
+$ pipenv sync
+$ pipenv run molecule test
 ```
 
 For more information read the [pipenv docs](https://docs.pipenv.org/).
@@ -82,13 +83,13 @@ See molecule/molecule.yml to check possible testing platforms.
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.4.3.0-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-2.10.1-green.svg)
-![Goss](https://img.shields.io/badge/goss-0.3.5-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.7.0.0-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-2.20.0-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.6-green.svg)
 
 ## Versioning
 
-For the versions available, see the [tags on this repository](https://github.com/idealista/prometheus_mysqld_exporter-role/tags).
+For the versions available, see the [tags on this repository](https://github.com/idealista/prometheus_mysqld_exporter_role/tags).
 
 Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGELOG.md) file.
 
@@ -96,7 +97,7 @@ Additionaly you can see what change in each version in the [CHANGELOG.md](CHANGE
 
 * **Idealista** - *Work with* - [idealista](https://github.com/idealista)
 
-See also the list of [contributors](https://github.com/idealista/prometheus_mysqld_exporter-role/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/idealista/prometheus_mysqld_exporter_role/contributors) who participated in this project.
 
 ## License
 

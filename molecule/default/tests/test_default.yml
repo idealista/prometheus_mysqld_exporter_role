@@ -28,11 +28,6 @@ file:
     group: {{ mysqld_exporter_group }}
     exists: true
     filetype: file
-  /run/mysqld_exporter/mysqld_exporter.pid:
-    owner: {{ mysqld_exporter_user }}
-    group: {{ mysqld_exporter_group }}
-    exists: true
-    filetype: file
   {{ mysqld_exporter_root_path }}:
     owner: {{ mysqld_exporter_user }}
     group: {{ mysqld_exporter_group }}

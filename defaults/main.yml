@@ -1,6 +1,6 @@
 ---
 
-mysqld_exporter_version: 0.10.0
+mysqld_exporter_version: 0.11.0
 mysqld_exporter_release_system: linux-amd64
 
 # Set true to force the download and installation of the binary
