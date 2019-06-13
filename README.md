@@ -67,7 +67,8 @@ Look to the [defaults](defaults/main.yml) properties file to see the possible co
 ### Installing dependencies
 
 ```sh
-$ pipenv install -r test-requirements.txt --python=2.7
+$ pipenv sync
+$ pipenv run molecule test
 ```
 
 For more information read the [pipenv docs](https://docs.pipenv.org/).
@@ -82,9 +83,9 @@ See molecule/molecule.yml to check possible testing platforms.
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.4.3.0-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-2.10.1-green.svg)
-![Goss](https://img.shields.io/badge/goss-0.3.5-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-2.7.0.0-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-2.20.0-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.6-green.svg)
 
 ## Versioning
 
