@@ -6,31 +6,27 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mysqld-exporter-${MOLECULE_DISTRO:-debian9}
-    image: geerlingguy/docker-${MOLECULE_DISTRO:-debian9}-ansible
+  - name: mysqldexporter
+    image: ${MOLECULE_DISTRO:-debian:buster-slim}
     privileged: false
     capabilities:
       - SYS_ADMIN
     volumes:
       - '/sys/fs/cgroup:/sys/fs/cgroup:ro'
-      - '/sys/fs/fuse/connections:/sys/fs/fuse/connections:ro'
-      - '/dev/hugepages:/dev/hugepages'
     groups:
-      - cassandra
+      - mysqld
     tmpfs:
       - '/tmp'
       - '/run'
       - '/run/lock'
     command: '/lib/systemd/systemd'
+    stop_signal: 'RTMIN+3'
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
   name: default
-playbooks:
-  create: create.yml
-  destroy: destroy.yml
 converge: playbook.yml
 verifier:
   name: goss
