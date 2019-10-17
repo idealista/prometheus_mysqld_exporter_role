@@ -18,11 +18,13 @@ mysqld_exporter_service_enabled: true
 mysqld_exporter_service_state: started
 
 # Files & Paths
+mysqld_exporter_download_path: /usr/src
 mysqld_exporter_root_path: /opt/mysqld_exporter
 mysqld_exporter_bin_path: "{{ mysqld_exporter_root_path }}/bin"
 mysqld_exporter_conf_path: /etc/mysqld_exporter
 mysqld_exporter_log_path: /var/log/mysqld_exporter
 mysqld_exporter_log_file: mysqld_exporter.log
+mysqld_exporter_package_path: "{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_package }}"
 
 # Options file values to read MySQL credentials from
 mysqld_exporter_mysql_user: root
