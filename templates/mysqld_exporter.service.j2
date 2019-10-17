@@ -11,9 +11,13 @@ Group={{ mysqld_exporter_group }}
 RuntimeDirectory=mysqld_exporter
 Type=simple
 Restart=always
-ExecStart=/bin/sh -c "{{ mysqld_exporter_bin_path }}/mysqld_exporter {% for option in mysqld_exporter_options %}--{{ option }} {% endfor %} > {{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }} 2>&1"
+ExecStart={{ mysqld_exporter_bin_path }}/mysqld_exporter {% for option in mysqld_exporter_options %}--{{ option }} {% endfor %}
+
+StandardOutput=append:{{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }}
+StandardError=append:{{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }}
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGTERM
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
