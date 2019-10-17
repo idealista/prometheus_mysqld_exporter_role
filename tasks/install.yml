@@ -3,16 +3,16 @@
 - name: MYSQLD_EXPORTER | Ensure mysqld_exporter group
   group:
     name: "{{ mysqld_exporter_group }}"
-    system: "yes"
+    system: true
     state: present
 
 - name: MYSQLD_EXPORTER | Ensure mysqld_exporter user
   user:
     name: "{{ mysqld_exporter_user }}"
     group: "{{ mysqld_exporter_group }}"
-    system: "yes"
+    system: true
     shell: /usr/sbin/nologin
-    createhome: "no"
+    createhome: false
 
 - name: MYSQLD_EXPORTER | Ensure skeleton paths
   file:

@@ -5,4 +5,4 @@
     name: mysqld_exporter
     state: "{{ mysqld_exporter_service_state }}"
     enabled: "{{ mysqld_exporter_service_enabled }}"
-    daemon_reload: "yes"
+    daemon_reload: true
