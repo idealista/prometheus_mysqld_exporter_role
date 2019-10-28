@@ -23,11 +23,6 @@ process:
     running: true
 
 file:
-  "{{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }}":
-    owner: root
-    group: root
-    exists: true
-    filetype: file
   {{ mysqld_exporter_root_path }}:
     owner: {{ mysqld_exporter_user }}
     group: {{ mysqld_exporter_group }}
@@ -43,8 +38,15 @@ file:
     group: {{ mysqld_exporter_group }}
     exists: true
     filetype: directory
+{% if redis_exporter_log_path is defined %}
   {{ mysqld_exporter_log_path }}:
     owner: {{ mysqld_exporter_user }}
     group: {{ mysqld_exporter_group }}
     exists: true
     filetype: directory
+  {{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }}:
+    owner: root
+    group: root
+    exists: true
+    filetype: file
+{% endif %}

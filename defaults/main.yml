@@ -25,8 +25,11 @@ mysqld_exporter_download_path: /usr/src
 mysqld_exporter_root_path: /opt/mysqld_exporter
 mysqld_exporter_bin_path: "{{ mysqld_exporter_root_path }}/bin"
 mysqld_exporter_conf_path: /etc/mysqld_exporter
-mysqld_exporter_log_path: /var/log/mysqld_exporter
-mysqld_exporter_log_file: mysqld_exporter.log
+# mysqld_exporter_log_path: /var/log/mysqld_exporter
+# mysqld_exporter_log_file: mysqld_exporter.log
+mysqld_exporter_log_output: journal
+# If you need output to a file, you can use file:{{ mysqld_exporter_log_path }}/{{ redis_exporter_log_file }}, append:..., rsyslog and other
+# options in Debian 10 (see https://www.freedesktop.org/software/systemd/man/systemd.exec.html)
 mysqld_exporter_package_path: "{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_package }}"
 
 # Options file values to read MySQL credentials from

@@ -13,8 +13,8 @@ Type=simple
 Restart=always
 ExecStart={{ mysqld_exporter_bin_path }}/mysqld_exporter {% for option in mysqld_exporter_options %}--{{ option }} {% endfor %}
 
-StandardOutput=append:{{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }}
-StandardError=append:{{ mysqld_exporter_log_path }}/{{ mysqld_exporter_log_file }}
+StandardOutput={{ mysqld_exporter_log_output }}
+StandardError={{ mysqld_exporter_log_output }}
 ExecReload=/bin/kill -HUP $MAINPID
 KillSignal=SIGTERM
 Restart=always

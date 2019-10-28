@@ -20,6 +20,7 @@ This ansible role installs a Prometheus MySQL Exporter in a debian environment.
 
 These instructions will get you a copy of the role for your ansible playbook. Once launched, it will install a [Prometheus MySQL Exporter](https://github.com/prometheus/mysqld_exporter) server in a Debian system.
 
+*Note:* Beginning with the 3.0 version, the default behaviour is the service sending logs to systemd's journal instead to a log file. You can change it modifying the necessary ansible vars (see defaults/main.yml)
 ### Prerequisities
 
 Ansible 2.8.x.x version installed.

@@ -14,7 +14,7 @@
     shell: /usr/sbin/nologin
     createhome: false
 
-- name: MYSQLD_EXPORTER | Ensure skeleton paths
+- name: MYSQLD_EXPORTER | Ensure skeleton bin and config paths
   file:
     dest: "{{ item }}"
     owner: "{{ mysqld_exporter_user }}"
@@ -24,7 +24,16 @@
     - "{{ mysqld_exporter_root_path }}"
     - "{{ mysqld_exporter_bin_path }}"
     - "{{ mysqld_exporter_conf_path }}"
+
+- name: MYSQLD_EXPORTER | Ensure skeleton log paths
+  file:
+    dest: "{{ item }}"
+    owner: "{{ mysqld_exporter_user }}"
+    group: "{{ mysqld_exporter_group }}"
+    state: directory
+  with_items:
     - "{{ mysqld_exporter_log_path }}"
+  when: mysqld_exporter_log_path is defined
 
 - name: MYSQLD_EXPORTER | Check mysqld_exporter_check version
   command: mysqld_exporter --version

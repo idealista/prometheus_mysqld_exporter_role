@@ -1,5 +1,8 @@
 extends: default
 
+ignore: |
+  test_*yml
+
 rules:
   braces:
     max-spaces-inside: 1
