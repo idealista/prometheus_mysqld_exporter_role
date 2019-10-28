@@ -43,10 +43,10 @@ mysqld_exporter_path: metrics
 
 mysqld_exporter_options:
   # General Flags (https://github.com/prometheus/mysqld_exporter#general-flags)
-  - "config.my-cnf='{{ mysqld_exporter_conf_path }}/.my.cnf'"
-  - "log.level='info'"
+  - "config.my-cnf={{ mysqld_exporter_conf_path }}/.my.cnf"
+  - "log.level=info"
   - "web.listen-address=:{{ mysqld_exporter_port }}"
-  - "web.telemetry-path='/{{ mysqld_exporter_path }}'"
+  - "web.telemetry-path=/{{ mysqld_exporter_path }}"
   # Collector Flags (https://github.com/prometheus/mysqld_exporter#collector-flags)
   - "collect.auto_increment.columns"
   - "collect.binlog_size"
