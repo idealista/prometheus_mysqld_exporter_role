@@ -3,18 +3,18 @@
 - name: MYSQLD_EXPORTER | Ensure mysqld_exporter group
   group:
     name: "{{ mysqld_exporter_group }}"
-    system: "yes"
+    system: true
     state: present
 
 - name: MYSQLD_EXPORTER | Ensure mysqld_exporter user
   user:
     name: "{{ mysqld_exporter_user }}"
     group: "{{ mysqld_exporter_group }}"
-    system: "yes"
+    system: true
     shell: /usr/sbin/nologin
-    createhome: "no"
+    createhome: false
 
-- name: MYSQLD_EXPORTER | Ensure skeleton paths
+- name: MYSQLD_EXPORTER | Ensure skeleton bin and config paths
   file:
     dest: "{{ item }}"
     owner: "{{ mysqld_exporter_user }}"
@@ -24,7 +24,16 @@
     - "{{ mysqld_exporter_root_path }}"
     - "{{ mysqld_exporter_bin_path }}"
     - "{{ mysqld_exporter_conf_path }}"
+
+- name: MYSQLD_EXPORTER | Ensure skeleton log paths
+  file:
+    dest: "{{ item }}"
+    owner: "{{ mysqld_exporter_user }}"
+    group: "{{ mysqld_exporter_group }}"
+    state: directory
+  with_items:
     - "{{ mysqld_exporter_log_path }}"
+  when: mysqld_exporter_log_path is defined
 
 - name: MYSQLD_EXPORTER | Check mysqld_exporter_check version
   command: mysqld_exporter --version
@@ -35,19 +44,19 @@
 - name: MYSQLD_EXPORTER | Download package
   get_url:
     url: "{{ mysqld_exporter_url }}"
-    dest: /tmp
+    dest: "{{ mysqld_exporter_download_path }}"
   when: mysqld_exporter_force_reinstall or mysqld_exporter_check is failed or mysqld_exporter_version not in mysqld_exporter_check.stdout
 
 - name: MYSQLD_EXPORTER | Extract package
   unarchive:
     copy: "no"
-    src: "/tmp/{{ mysqld_exporter_package }}"
-    dest: /tmp
+    src: "{{ mysqld_exporter_package_path }}"
+    dest: "{{ mysqld_exporter_download_path }}"
   when: mysqld_exporter_force_reinstall or mysqld_exporter_check is failed or mysqld_exporter_version not in mysqld_exporter_check.stdout
 
 - name: MYSQLD_EXPORTER | Copy binary
   copy:
-    src: "/tmp/{{ mysqld_exporter_release_name }}/mysqld_exporter"
+    src: "{{ mysqld_exporter_download_path }}/{{ mysqld_exporter_release_name }}/mysqld_exporter"
     dest: "{{ mysqld_exporter_bin_path }}/mysqld_exporter"
     owner: "{{ mysqld_exporter_user }}"
     group: "{{ mysqld_exporter_group }}"
