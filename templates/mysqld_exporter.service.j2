@@ -10,7 +10,6 @@ User={{ mysqld_exporter_user }}
 Group={{ mysqld_exporter_group }}
 RuntimeDirectory=mysqld_exporter
 Type=simple
-Restart=always
 ExecStart={{ mysqld_exporter_bin_path }}/mysqld_exporter {% for option in mysqld_exporter_options %}--{{ option }} {% endfor %}
 
 StandardOutput={{ mysqld_exporter_log_output }}
