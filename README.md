@@ -35,7 +35,7 @@ Create or add to your roles dependency file (e.g requirements.yml) from GitHub:
 ```
 - src: http://github.com/idealista/prometheus_mysqld_exporter_role.git
   scm: git
-  version: 1.0.0
+  version: 3.0.0
   name: prometheus_mysqld_exporter
 ```
 
