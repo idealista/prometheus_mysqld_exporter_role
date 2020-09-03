@@ -41,6 +41,8 @@ mysqld_exporter_mysql_port: 3306
 mysqld_exporter_port: 9104
 mysqld_exporter_path: metrics
 
+mysqld_exporter_private_tmp: true
+
 mysqld_exporter_options:
   # General Flags (https://github.com/prometheus/mysqld_exporter#general-flags)
   - "config.my-cnf={{ mysqld_exporter_conf_path }}/.my.cnf"

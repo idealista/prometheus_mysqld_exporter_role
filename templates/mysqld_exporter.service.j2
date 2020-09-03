@@ -5,7 +5,7 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-PrivateTmp=yes
+PrivateTmp={{ mysqld_exporter_private_tmp }}
 User={{ mysqld_exporter_user }}
 Group={{ mysqld_exporter_group }}
 RuntimeDirectory=mysqld_exporter
