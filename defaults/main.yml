@@ -36,9 +36,10 @@ mysqld_exporter_package_path: "{{ mysqld_exporter_download_path }}/{{ mysqld_exp
 mysqld_exporter_mysql_user: root
 mysqld_exporter_mysql_password: default
 mysqld_exporter_mysql_port: 3306
+mysqld_exporter_mysql_host: localhost
 
 # Port & path
-mysqld_exporter_port: 9104
+mysqld_exporter_port: 0.0.0.0:9104
 mysqld_exporter_path: metrics
 
 mysqld_exporter_private_tmp: true
