@@ -86,7 +86,7 @@ See molecule/molecule.yml to check possible testing platforms.
 
 ![Ansible](https://img.shields.io/badge/ansible-4.0.0-green.svg)
 ![Molecule](https://img.shields.io/badge/molecule-3.3.2-green.svg)
-![Goss](https://img.shields.io/badge/goss-0.3.7-green.svg)
+![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
 
 ## Versioning
 
