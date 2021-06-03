@@ -23,7 +23,7 @@ These instructions will get you a copy of the role for your ansible playbook. On
 *Note:* Beginning with the 3.0 version, the default behaviour is the service sending logs to systemd's journal instead to a log file. You can change it modifying the necessary ansible vars (see defaults/main.yml)
 ### Prerequisities
 
-Ansible 2.8.x.x version installed.
+Ansible 4.0.0 version installed.
 Inventory destination should be a Debian environment.
 
 For testing purposes, [Molecule](https://molecule.readthedocs.io/) with Docker as driver and [Goss](http://goss.rocks) as verifier
@@ -84,8 +84,8 @@ See molecule/molecule.yml to check possible testing platforms.
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-2.8.0.0-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-2.22.0-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-4.0.0-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-3.3.2-green.svg)
 ![Goss](https://img.shields.io/badge/goss-0.3.7-green.svg)
 
 ## Versioning
