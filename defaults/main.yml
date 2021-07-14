@@ -36,8 +36,10 @@ mysqld_exporter_package_path: "{{ mysqld_exporter_download_path }}/{{ mysqld_exp
 mysqld_exporter_mysql_user: root
 mysqld_exporter_mysql_password: default
 mysqld_exporter_mysql_port: 3306
+mysqld_exporter_mysql_host: localhost
 
 # Port & path
+mysqld_exporter_host: 0.0.0.0
 mysqld_exporter_port: 9104
 mysqld_exporter_path: metrics
 
@@ -47,7 +49,7 @@ mysqld_exporter_options:
   # General Flags (https://github.com/prometheus/mysqld_exporter#general-flags)
   - "config.my-cnf={{ mysqld_exporter_conf_path }}/.my.cnf"
   - "log.level=info"
-  - "web.listen-address=:{{ mysqld_exporter_port }}"
+  - "web.listen-address={{ mysqld_exporter_host }}:{{ mysqld_exporter_port }}"
   - "web.telemetry-path=/{{ mysqld_exporter_path }}"
   # Collector Flags (https://github.com/prometheus/mysqld_exporter#collector-flags)
   - "collect.auto_increment.columns"

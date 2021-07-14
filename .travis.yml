@@ -12,7 +12,6 @@ env:
   matrix:
     - MOLECULE_DISTRO: debian:buster-slim
     - MOLECULE_DISTRO: debian:stretch-slim
-    - MOLECULE_DISTRO: debian:jessie-slim
 script:
   - export MOLECULE_DISTRO=${MOLECULE_DISTRO}
   - pipenv run molecule test
