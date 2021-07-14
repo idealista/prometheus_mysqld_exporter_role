@@ -4,9 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/develop)
 
+## [3.2.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.2.0)
+[Full Changelog](https://github.com/idealista/prometheus_mysqld_exporter_role/compare/3.1.1...3.2.0)
+### Added
+- [#14](https://github.com/idealista/prometheus_mysqld_exporter_role/pull/14) *[FEATURE] Allow to specify MySQL host using mysqld_exporter_mysql_host and local listener using mysqld_exporter_host* @spech66
+
+## [3.1.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.1.1)
+[Full Changelog](https://github.com/idealista/prometheus_mysqld_exporter_role/compare/3.1.0...3.1.1)
 ### Added
 - [#25](https://github.com/idealista/prometheus_mysqld_exporter_role/issues/25) *[FEATURE] Role reshaping* @marcelogalmor
-- [#14](https://github.com/idealista/prometheus_mysqld_exporter_role/pull/14) *[FEATURE] Allow to specify MySQL host using mysqld_exporter_mysql_host and local listener using mysqld_exporter_host* @spech66
 
 ## [3.1.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.1.0)
 [Full Changelog](https://github.com/idealista/prometheus_mysqld_exporter_role/compare/3.0.0...3.1.0)

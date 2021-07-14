@@ -23,7 +23,7 @@ These instructions will get you a copy of the role for your ansible playbook. On
 *Note:* Beginning with the 3.0 version, the default behaviour is the service sending logs to systemd's journal instead to a log file. You can change it modifying the necessary ansible vars (see defaults/main.yml)
 ### Prerequisities
 
-Ansible 4.0.0 version installed.
+Ansible >= 2.9.0 version installed.
 Inventory destination should be a Debian environment.
 
 For testing purposes, [Molecule](https://molecule.readthedocs.io/) with Docker as driver and [Goss](http://goss.rocks) as verifier
@@ -35,7 +35,7 @@ Create or add to your roles dependency file (e.g requirements.yml) from GitHub:
 ```
 - src: http://github.com/idealista/prometheus_mysqld_exporter_role.git
   scm: git
-  version: 3.0.0
+  version: 3.2.0
   name: prometheus_mysqld_exporter
 ```
 
