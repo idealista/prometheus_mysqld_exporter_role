@@ -3,8 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/develop)
+
+## [3.3.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.3.0)
+[Full Changelog](https://github.com/idealista/prometheus_mysqld_exporter_role/compare/3.2.0...3.3.0)
 ### Changed
-- [#14](https://github.com/idealista/prometheus_mysqld_exporter_role/issues/29) *[FEATURE] Added support for Debian 11 and removed Debian 9 support. * @aren-pulid0
+- [#29](https://github.com/idealista/prometheus_mysqld_exporter_role/issues/29) *[FEATURE] Added support for Debian 11 and removed Debian 9 support. * @aren-pulid0
+
 ## [3.2.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.2.0)
 [Full Changelog](https://github.com/idealista/prometheus_mysqld_exporter_role/compare/3.1.1...3.2.0)
 ### Added
