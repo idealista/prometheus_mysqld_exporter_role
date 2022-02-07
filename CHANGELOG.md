@@ -4,6 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a ch
 
 ## [Unreleased](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/develop)
 
+## [3.4.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.4.0)
+### Fixed
+- [#32](https://github.com/idealista/prometheus_mysqld_exporter_role/issues/32) *Fixed .my.cnf template. * @frantsao
+- [#32](https://github.com/idealista/prometheus_mysqld_exporter_role/issues/32) *Updated mysql_role version used in tests (fixes broken tests because Oracle repo issues) * @frantsao
+- *Updated test dependencies. Improved python3 support in tests * @frantsao
+
 ## [3.3.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.3.0)
 [Full Changelog](https://github.com/idealista/prometheus_mysqld_exporter_role/compare/3.2.0...3.3.0)
 ### Changed
