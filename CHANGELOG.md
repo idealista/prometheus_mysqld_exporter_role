@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a changelog](https://github.com/olivierlacan/keep-a-changelog).
 
 ## [Unreleased](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/develop)
+
+## [3.4.0](https://github.com/idealista/prometheus_mysqld_exporter_role/tree/3.4.0)
 ### Fixed
 - [#32](https://github.com/idealista/prometheus_mysqld_exporter_role/issues/32) *Fixed .my.cnf template. * @frantsao
 - [#32](https://github.com/idealista/prometheus_mysqld_exporter_role/issues/32) *Updated mysql_role version used in tests (fixes broken tests because Oracle repo issues) * @frantsao

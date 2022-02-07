@@ -35,7 +35,7 @@ Create or add to your roles dependency file (e.g requirements.yml) from GitHub:
 ```
 - src: http://github.com/idealista/prometheus_mysqld_exporter_role.git
   scm: git
-  version: 3.2.0
+  version: 3.4.0
   name: prometheus_mysqld_exporter
 ```
 
@@ -84,8 +84,8 @@ See molecule/molecule.yml to check possible testing platforms.
 
 ## Built With
 
-![Ansible](https://img.shields.io/badge/ansible-4.0.0-green.svg)
-![Molecule](https://img.shields.io/badge/molecule-3.3.2-green.svg)
+![Ansible](https://img.shields.io/badge/ansible-5.2.0-green.svg)
+![Molecule](https://img.shields.io/badge/molecule-3.5.2-green.svg)
 ![Goss](https://img.shields.io/badge/goss-0.3.16-green.svg)
 
 ## Versioning
