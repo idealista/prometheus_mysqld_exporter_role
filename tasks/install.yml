@@ -20,6 +20,7 @@
     owner: "{{ mysqld_exporter_user }}"
     group: "{{ mysqld_exporter_group }}"
     state: directory
+    mode: 0755
   with_items:
     - "{{ mysqld_exporter_root_path }}"
     - "{{ mysqld_exporter_bin_path }}"
@@ -31,6 +32,7 @@
     owner: "{{ mysqld_exporter_user }}"
     group: "{{ mysqld_exporter_group }}"
     state: directory
+    mode: 0755
   with_items:
     - "{{ mysqld_exporter_log_path }}"
   when: mysqld_exporter_log_path is defined
